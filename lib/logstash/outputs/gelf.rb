@@ -123,7 +123,7 @@ class LogStash::Outputs::Gelf < LogStash::Outputs::Base
 
     if @custom_fields
       @custom_fields.each do |field_name, field_value|
-        m["_#{field_name}"] = field_value unless field_name == 'id'
+        m["_#{field_name}"] = event.sprintf(field_value) unless field_name == 'id'
       end
     end
 
